@@ -8,28 +8,23 @@ import javax.inject.Inject;
 
 public class SmartPhone {
 
-    Processor processor;
-
     String name;
 
     public SmartPhone(String name) {
         this.name = name;
     }
 
-    @Inject
-    ExternalStorage externalStorage;
+    @Inject ExternalStorage externalStorage;
 
-    @Inject
-    public SmartPhone(Processor processor) {
-        this.processor=processor;
-    }
+    @Inject Processor processor;
 
     public  String getDeviceInfo(){
         String deviceInfo;
         deviceInfo = name + " Details \n";
-        deviceInfo += processor.getInfo();
+
         if(externalStorage!=null)
             deviceInfo += externalStorage.getInfo();
+        //deviceInfo += processor.getInfo();
         return deviceInfo;
     }
 

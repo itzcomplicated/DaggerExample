@@ -2,6 +2,7 @@ package com.tca.daggersample.daggersample.di;
 
 import com.tca.daggersample.daggersample.models.ExternalStorage;
 import com.tca.daggersample.daggersample.models.InternalStorage;
+import com.tca.daggersample.daggersample.models.Processor;
 import com.tca.daggersample.daggersample.models.SmartPhone;
 
 import dagger.Module;
@@ -33,6 +34,12 @@ public class DeviceModule {
     ExternalStorage providesExternalStorage(){
         return new ExternalStorage(externalMemory);
     }
+
+    @Provides
+    Processor providesProcessor(InternalStorage internalStorage){
+        return new Processor(internalStorage);
+    }
+
 
     @Provides
     SmartPhone providesSmartPhone(){

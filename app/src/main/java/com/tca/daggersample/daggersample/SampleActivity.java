@@ -43,6 +43,8 @@ public class SampleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sample);
 
+        ((DIApplication)getApplication()).getDeviceComponent().inject(this);
+
         mTextMessage = (TextView) findViewById(R.id.message);
         mTextMessage.setText(smartPhone.getDeviceInfo());
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);

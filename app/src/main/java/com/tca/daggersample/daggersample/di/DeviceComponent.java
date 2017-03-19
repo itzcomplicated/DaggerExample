@@ -8,7 +8,7 @@ import dagger.Component;
  * Created by TCA on 19-03-2017.
  */
 
-@Component(modules={DeviceComponent.class})
+@Component(modules={DeviceModule.class})
 public interface DeviceComponent {
     void inject(SampleActivity sampleActivity);
 }
