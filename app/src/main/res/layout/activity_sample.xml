@@ -8,6 +8,8 @@
     android:orientation="vertical"
     tools:context="com.tca.daggersample.daggersample.SampleActivity">
 
+
+
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
@@ -25,6 +27,11 @@
             android:text="@string/title_home" />
 
     </FrameLayout>
+    <Button
+        android:id="@+id/buttonNext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Next" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"

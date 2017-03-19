@@ -7,9 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.tca.daggersample.daggersample.models.SmartPhone;
+
+import javax.inject.Inject;
+
 public class SampleActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
+
+    @Inject SmartPhone smartPhone;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -26,12 +32,6 @@ public class SampleActivity extends AppCompatActivity {
                 case R.id.navigation_notifications:
                     mTextMessage.setText(R.string.title_notifications);
                     return true;
-                case R.id.navigation_notifications1:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
-                case R.id.navigation_notifications2:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
             }
             return false;
         }
@@ -44,6 +44,7 @@ public class SampleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sample);
 
         mTextMessage = (TextView) findViewById(R.id.message);
+        mTextMessage.setText(smartPhone.getDeviceInfo());
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
