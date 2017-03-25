@@ -5,6 +5,7 @@ import com.tca.daggersample.daggersample.models.InternalStorage;
 import com.tca.daggersample.daggersample.models.Processor;
 import com.tca.daggersample.daggersample.models.SmartPhone;
 
+import dagger.MembersInjector;
 import dagger.Module;
 import dagger.Provides;
 
@@ -25,6 +26,13 @@ public class DeviceModule {
     }
 
     @Provides
+    SmartPhone providesSmartPhone(MembersInjector<SmartPhone> injector){
+        SmartPhone smartPhone= new SmartPhone(deviceName);
+        injector.injectMembers(smartPhone);
+        return smartPhone;
+    }
+
+    @Provides
     InternalStorage providesInternalStorage()
     {
         return new InternalStorage(internalMemory);
@@ -36,13 +44,11 @@ public class DeviceModule {
     }
 
     @Provides
-    Processor providesProcessor(InternalStorage internalStorage){
-        return new Processor(internalStorage);
+    Processor providesProcessor(MembersInjector<Processor> injector){
+        Processor processor= new Processor();
+        injector.injectMembers(processor);
+        return processor;
     }
 
 
-    @Provides
-    SmartPhone providesSmartPhone(){
-        return  new SmartPhone(deviceName);
-    }
-}
+   }

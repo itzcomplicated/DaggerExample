@@ -18,7 +18,7 @@ public class DIApplication  extends Application {
     public void onCreate() {
         super.onCreate();
         deviceComponent= DaggerDeviceComponent.builder()
-                .deviceModule(new DeviceModule("Pixel",1024,2*1024))
+                .deviceModule(new DeviceModule("Pixel Perfect",1024,2*1024))
                 .build();
 
     }

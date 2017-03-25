@@ -8,19 +8,15 @@ import javax.inject.Inject;
 
 public class Processor {
 
-    InternalStorage internalStorage;
+    @Inject InternalStorage internalStorage;
 
     int lenght=64;
 
-    @Inject
-    public Processor(InternalStorage internalStorage) {
-        this.internalStorage=internalStorage;
-    }
 
     public String getInfo(){
         String info=  lenght + "bit processor \n";
         if(internalStorage !=null)
-            info += getInfo();
+            info += internalStorage.getInfo();
         return info;
     }
 }

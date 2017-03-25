@@ -19,12 +19,13 @@ public class SmartPhone {
     @Inject Processor processor;
 
     public  String getDeviceInfo(){
-        String deviceInfo;
-        deviceInfo = name + " Details \n";
+        String deviceInfo="";
+
 
         if(externalStorage!=null)
             deviceInfo += externalStorage.getInfo();
-        //deviceInfo += processor.getInfo();
+        deviceInfo += processor.getInfo();
+        deviceInfo += name + " Details \n";
         return deviceInfo;
     }
 
