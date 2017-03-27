@@ -13,7 +13,7 @@ public class ExternalStorage {
     int sizeInMB;
 
     public String getInfo(){
-        return  sizeInMB + "MB External Storage \n";
+        return  sizeInMB + "MB External Storage \n" + this +"\n";
     }
 
 }

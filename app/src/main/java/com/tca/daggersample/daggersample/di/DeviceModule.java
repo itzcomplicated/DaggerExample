@@ -5,6 +5,8 @@ import com.tca.daggersample.daggersample.models.InternalStorage;
 import com.tca.daggersample.daggersample.models.Processor;
 import com.tca.daggersample.daggersample.models.SmartPhone;
 
+import javax.inject.Singleton;
+
 import dagger.MembersInjector;
 import dagger.Module;
 import dagger.Provides;
@@ -38,7 +40,8 @@ public class DeviceModule {
         return new InternalStorage(internalMemory);
     }
 
-    @Provides
+
+    @Provides @Singleton
     ExternalStorage providesExternalStorage(){
         return new ExternalStorage(externalMemory);
     }

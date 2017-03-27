@@ -15,7 +15,12 @@ public class SampleActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
 
+    private TextView mTextNewMessage;
+
+
     @Inject SmartPhone smartPhone;
+
+    @Inject SmartPhone newSmartPhone;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -47,6 +52,10 @@ public class SampleActivity extends AppCompatActivity {
 
         mTextMessage = (TextView) findViewById(R.id.message);
         mTextMessage.setText(smartPhone.getDeviceInfo());
+
+        mTextNewMessage= (TextView)findViewById(R.id.new_message);
+        mTextNewMessage.setText(newSmartPhone.getDeviceInfo());
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }

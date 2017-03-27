@@ -14,7 +14,7 @@ public class InternalStorage {
 
 
     public String getInfo(){
-        return  sizeInMB + "MB Internal Storage \n";
+        return  sizeInMB + "MB Internal Storage \n " + this +"\n";
     }
 
 
