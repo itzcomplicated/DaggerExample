@@ -1,5 +1,6 @@
 package com.tca.daggersample.daggersample.di;
 
+import com.tca.daggersample.daggersample.DetailActivity;
 import com.tca.daggersample.daggersample.SampleActivity;
 
 import javax.inject.Singleton;
@@ -15,4 +16,5 @@ import dagger.Component;
 @Singleton
 public interface DeviceComponent {
     void inject(SampleActivity sampleActivity);
+    void inject(DetailActivity detailActivity);
 }

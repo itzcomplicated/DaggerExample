@@ -6,13 +6,32 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
+
+import com.tca.daggersample.daggersample.models.SmartPhone;
+
+import javax.inject.Inject;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class DetailActivity extends AppCompatActivity {
+
+    @BindView(R.id.textView) TextView flagShipTextView;
+
+    @Inject SmartPhone flagShipPhone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        ButterKnife.bind(this);
+
+        ((DIApplication)getApplication()).getDeviceComponent().inject(this);
+
+        flagShipTextView.setText(flagShipPhone.getDeviceInfo());
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

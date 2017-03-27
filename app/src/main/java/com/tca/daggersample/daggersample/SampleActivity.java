@@ -1,5 +1,6 @@
 package com.tca.daggersample.daggersample;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -11,12 +12,15 @@ import com.tca.daggersample.daggersample.models.SmartPhone;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class SampleActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
+    @BindView(R.id.message) TextView mTextMessage;
 
-    private TextView mTextNewMessage;
-
+    @BindView(R.id.new_message)TextView mTextNewMessage;
 
     @Inject SmartPhone smartPhone;
 
@@ -48,16 +52,23 @@ public class SampleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sample);
 
+        ButterKnife.bind(this);
+
         ((DIApplication)getApplication()).getDeviceComponent().inject(this);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
         mTextMessage.setText(smartPhone.getDeviceInfo());
 
-        mTextNewMessage= (TextView)findViewById(R.id.new_message);
         mTextNewMessage.setText(newSmartPhone.getDeviceInfo());
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
+
+    @OnClick(R.id.buttonNext)
+    public void loadDetailPage() {
+        Intent  detailPageIntent= new Intent(this,DetailActivity.class);
+        startActivity(detailPageIntent);
+    }
+
 
 }
